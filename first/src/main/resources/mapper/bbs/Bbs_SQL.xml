@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bbs">
+	
+	<select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
+		<include refid="com.pagingPre"/>
+		<![CDATA[
+			SELECT 
+				COMPANY_CD, BBS_ID, BBS_NO, BBS_CATE_ID, BBS_TITLE, BBS_CONT, HIT_CNT, 
+				reply_cnt, like_cnt, atch_cnt, NOTI_YN, thumbnail, crt_company_cd, crt_usr_id, 
+				CRT_DT, upd_company_cd, upd_usr_id, UPD_DT 
+			FROM TBCOM_BBS, (select @rnum:=0) TMP
+		]]>
+		<include refid="com.pagingPost"/>
+	</select>
+	
+	<select id="getBbsSeq" parameterType="hashmap" resultType="int">
+		SELECT IFNULL(MAX(BBS.BBS_NO), 0) + 1 AS BBS_NO FROM TBCOM_BBS BBS WHERE BBS_ID = #{BBS_ID} AND COMPANY_CD = #{COMPANY_CD}
+	</select>
+	
+	<insert id="insertBoard" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO TBCOM_BBS
+			(
+			   COMPANY_CD
+			  ,BBS_ID
+			  ,BBS_NO
+			  ,BBS_CATE_ID
+			  ,BBS_TITLE
+			  ,BBS_CONT
+			  ,HIT_CNT
+			  ,reply_cnt
+			  ,like_cnt
+			  ,atch_cnt
+			  ,NOTI_YN
+			  ,thumbnail
+			  ,crt_company_cd
+			  ,crt_usr_id
+			  ,CRT_DT 
+			)
+			VALUES
+			(
+				#{COMPANY_CD}, 
+			    #{BBS_ID}, 
+			    #{BBS_NO}, 
+			    #{BBS_CATE_ID}, 
+			    #{BBS_TITLE}, 
+			    #{BBS_CONT}, 
+			    0,    
+			    0,    
+			    0,    
+			    0,   
+			    'Y',
+			    '',
+			    #{COMPANY_CD},
+			    #{CRT_USR_ID}, 
+			    now() 
+			)
+		]]>
+	</insert>
+	
+	<update id="updateHitCnt" parameterType="hashmap">
+		<![CDATA[
+			UPDATE TBCOM_BBS 
+			SET
+				HIT_CNT = IFNULL(HIT_CNT, 0) + 1
+			WHERE
+				BBS_NO = #{BBS_NO}
+				AND BBS_ID = #{BBS_ID}
+				AND COMPANY_CD = #{COMPANY_CD}	
+		]]>
+	</update>
+	
+	<select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+				a.COMPANY_CD,
+				a.BBS_ID,
+				a.BBS_NO,
+				a.BBS_CATE_ID,
+				b.BBS_CATE_NAME,
+				a.HIT_CNT,
+				a.CRT_USR_ID,
+				a.CRT_DT,
+				a.BBS_TITLE,
+				a.BBS_CONT
+			FROM
+				TBCOM_BBS a, TBCOM_BBS_CATE b
+			WHERE
+				a.COMPANY_CD = b.COMPANY_CD
+				AND a.BBS_ID = b.BBS_ID
+				AND a.BBS_CATE_ID = b.BBS_CATE_ID
+				AND a.BBS_NO = #{BBS_NO}
+				AND a.BBS_ID = #{BBS_ID}
+				AND a.COMPANY_CD = #{COMPANY_CD}	
+		]]>
+	</select>
+	
+	<update id="updateBoard" parameterType="hashmap">
+		<![CDATA[
+			UPDATE TBCOM_BBS 
+			SET
+				BBS_CATE_ID = #{BBS_CATE_ID},
+				BBS_TITLE = #{BBS_TITLE},
+				BBS_CONT = #{BBS_CONT}
+			WHERE
+				BBS_NO = #{BBS_NO}
+				AND BBS_ID = #{BBS_ID}	
+				AND COMPANY_CD = #{COMPANY_CD}	
+		]]>
+	</update>
+	
+	<update id="deleteBoard" parameterType="hashmap">
+		<![CDATA[
+			UPDATE TBCOM_BBS
+			SET
+				NOTI_YN = 'N'
+			WHERE
+				BBS_NO = #{BBS_NO}	
+				AND BBS_ID = #{BBS_ID}	
+				AND COMPANY_CD = #{COMPANY_CD}	
+		]]>
+	</update>
+	
+	<select id="cateList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT COMPANY_CD, BBS_ID, BBS_CATE_ID, BBS_CATE_NAME, BBS_CATE_ORDER, CRT_EMPNO, CRT_DT, UPD_EMPNO, UPD_DT 
+			FROM TBCOM_BBS_CATE
+			WHERE
+				BBS_ID = #{BBS_ID}	
+				AND COMPANY_CD = #{COMPANY_CD}
+		]]>
+	</select>
+	
+	<insert id="bbsAtachInsert" parameterType="hashmap">
+		INSERT INTO TBCOM_BBS_ATTACH(
+			  COMPANY_CD
+			, BBS_ID
+			, BBS_NO
+			, ATCH_ID
+		) VALUES (
+			  #{COMPANY_CD}
+			, #{BBS_ID}
+			, #{BBS_NO}
+			, #{atch_id}
+		)
+	</insert>
+	
+	<select id="getAttachList" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			  a.COMPANY_CD AS COMPANY_CD
+			, b.BBS_ID AS BBS_ID
+			, b.BBS_NO AS BBS_NO
+			, a.ATCH_ID AS ATCH_ID
+			, a.FILE_PATH AS FILE_PATH
+			, a.FILE_NM AS FILE_NM
+			, a.FILE_EXT_NM AS FILE_EXT_NM
+			, a.FILE_SIZE AS FILE_SIZE
+			, a.CRT_EMPNO AS CRT_EMPNO
+			, DATE_FORMAT(a.CRT_DT, '%Y-%m-%d') AS CRT_DT
+			, a.UPD_EMPNO AS UPD_EMPNO
+			, DATE_FORMAT(a.UPD_DT, '%Y-%m-%d') AS UPD_DT
+		FROM TBCOM_ATTACH a INNER JOIN TBCOM_BBS_ATTACH b
+		ON a.COMPANY_CD = b.COMPANY_CD AND a.ATCH_ID = b.ATCH_ID
+		WHERE b.COMPANY_CD = #{COMPANY_CD}
+			AND b.BBS_ID = #{BBS_ID}
+			AND b.BBS_NO = #{BBS_NO}
+			<if test="ATCH_ID != null">
+				AND b.ATCH_ID = #{ATCH_ID}
+			</if> 
+		ORDER BY b.ATCH_ID ASC
+	</select>
+	
+	<select id="getAttach" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			  a.COMPANY_CD AS COMPANY_CD
+			, b.BBS_ID AS BBS_ID
+			, b.BBS_NO AS BBS_NO
+			, a.ATCH_ID AS ATCH_ID
+			, a.FILE_PATH AS FILE_PATH
+			, a.FILE_NM AS FILE_NM
+			, a.FILE_EXT_NM AS FILE_EXT_NM
+			, a.FILE_SIZE AS FILE_SIZE
+			, a.CRT_EMPNO AS CRT_EMPNO
+			, DATE_FORMAT(a.CRT_DT, '%Y-%m-%d') AS CRT_DT
+			, a.UPD_EMPNO AS UPD_EMPNO
+			, DATE_FORMAT(a.UPD_DT, '%Y-%m-%d') AS UPD_DT
+		FROM TBCOM_ATTACH a INNER JOIN TBCOM_BBS_ATTACH b
+		ON a.COMPANY_CD = b.COMPANY_CD AND a.ATCH_ID = b.ATCH_ID
+		WHERE b.COMPANY_CD = #{COMPANY_CD}
+			AND b.BBS_ID = #{BBS_ID}
+			AND b.BBS_NO = #{BBS_NO}
+			<if test="ATCH_ID != null">
+				AND b.ATCH_ID = #{ATCH_ID}
+			</if> 
+		ORDER BY b.ATCH_ID ASC
+	</select>
+	
+	<select id="getDeletedAttachList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			  a.COMPANY_CD AS COMPANY_CD
+			, a.ATCH_ID AS ATCH_ID
+			, a.FILE_PATH AS FILE_PATH
+			, a.FILE_NM AS FILE_NM
+			, a.FILE_EXT_NM AS FILE_EXT_NM
+			, a.FILE_SIZE AS FILE_SIZE
+			, a.CRT_EMPNO AS CRT_EMPNO
+			, DATE_FORMAT(a.CRT_DT, '%Y-%m-%d') AS CRT_DT
+			, a.UPD_EMPNO AS UPD_EMPNO
+			, DATE_FORMAT(a.UPD_DT, '%Y-%m-%d') AS UPD_DT
+		FROM TBCOM_ATTACH a INNER JOIN TBCOM_BBS_ATTACH b
+		ON a.COMPANY_CD = b.COMPANY_CD AND a.ATCH_ID = b.ATCH_ID
+		WHERE b.COMPANY_CD = #{COMPANY_CD}
+			AND b.BBS_ID = #{BBS_ID}
+			AND b.BBS_NO = #{BBS_NO}
+			<if test="atchIds != null and atchIds.length > 0">
+	    		AND b.ATCH_ID NOT IN (
+				<foreach collection="atchIds" item="id" separator=",">
+					#{id}
+				</foreach>
+				)	
+	    	</if>
+	</select>
+	
+	<delete id="deleteAttach" parameterType="hashmap">
+		DELETE FROM TBCOM_ATTACH WHERE COMPANY_CD = #{COMPANY_CD}
+			AND ATCH_ID IN (
+				<foreach collection="deletedAttachList" item="attach" separator=",">
+					#{attach.ATCH_ID}
+				</foreach>
+				)
+	</delete>
+	
+<!-- 	<delete id="deleteBbsAttach" parameterType="hashmap"> -->
+<!-- 		DELETE FROM TBCOM_BBS_ATTACH WHERE COMPANY_CD = #{COMPANY_CD} -->
+<!-- 			AND ATCH_ID IN ( -->
+<!-- 				<foreach collection="deletedBbsAttachList" item="attach" separator=","> -->
+<!-- 					#{attach.ATCH_ID} -->
+<!-- 				</foreach> -->
+<!-- 				) -->
+<!-- 	</delete> -->
+	
+</mapper>

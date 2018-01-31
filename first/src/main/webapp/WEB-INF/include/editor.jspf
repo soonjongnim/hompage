@@ -1,0 +1,166 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap-wysiwyg/css/style.css"/>
+<script src="${pageContext.request.contextPath}/bootstrap-wysiwyg/external/jquery.hotkeys.js"></script>
+<script src="${pageContext.request.contextPath}/bootstrap-wysiwyg/external/google-code-prettify/prettify.js"></script>
+<script src="${pageContext.request.contextPath}/bootstrap-wysiwyg/bootstrap-wysiwyg.js"></script>
+<div class="bootstrap-wysiwyg">
+	<div class="pull-right"></div>
+	<div id="alerts"></div>
+	<div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+		<div class="btn-group">
+			<a class="btn btn-default dropdown-toggle fore-color" data-toggle="dropdown" title="글자색상">
+				<i class="fa fa-font"></i><b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+			</ul>
+		</div>
+		
+		<div class="btn-group">
+			<a class="btn btn-default dropdown-toggle back-color" data-toggle="dropdown" title="글자 배경색">
+				<i class="fa fa-paint-brush"></i>&nbsp;<b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+			</ul>
+		</div>
+		
+		<div class="btn-group">
+			<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="글자크기">
+				<i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+				<li><a data-edit="fontSize 5" class="fs-Five">크게</a></li>
+				<li><a data-edit="fontSize 3" class="fs-Three">보통</a></li>
+				<li><a data-edit="fontSize 1" class="fs-One">작게</a></li>
+			</ul>
+		</div>
+		<div class="btn-group">
+			<a class="btn btn-default" data-edit="bold" title="굵게 (Ctrl+B)"><i class="fa fa-bold"></i></a>
+			<a class="btn btn-default" data-edit="italic" title="기울임 (Ctrl+I)"><i class="fa fa-italic"></i></a>
+			<a class="btn btn-default" data-edit="strikethrough" title="취소선"><i class="fa fa-strikethrough"></i></a>
+			<a class="btn btn-default" data-edit="underline" title="밑줄 (Ctrl+U)"><i class="fa fa-underline"></i></a>
+		</div>
+		<div class="btn-group">
+			<a class="btn btn-default" data-edit="insertunorderedlist" title="원형 리스트"><i class="fa fa-list-ul"></i></a>
+			<a class="btn btn-default" data-edit="insertorderedlist" title="숫자 리스트"><i class="fa fa-list-ol"></i></a>
+			<a class="btn btn-default" data-edit="outdent" title="내어쓰기 (Shift+Tab)"><i class="fa fa-outdent"></i></a>
+			<a class="btn btn-default" data-edit="indent" title="들여쓰기 (Tab)"><i class="fa fa-indent"></i></a>
+		</div>
+		<div class="btn-group">
+			<a class="btn btn-default" data-edit="justifyleft" title="왼쪽정렬 (Ctrl+L)"><i class="fa fa-align-left"></i></a>
+			<a class="btn btn-default" data-edit="justifycenter" title="중앙정렬 (Ctrl+E)"><i class="fa fa-align-center"></i></a>
+			<a class="btn btn-default" data-edit="justifyright" title="오른쪽정렬 (Ctrl+R)"><i class="fa fa-align-right"></i></a>
+			<a class="btn btn-default" data-edit="justifyfull" title="양쪽정렬 (Ctrl+J)"><i class="fa fa-align-justify"></i></a>
+		</div>
+		<!-- <div class="btn-group">
+			<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="fa fa-link"></i></a>
+			<div class="dropdown-menu input-append">
+				<input placeholder="URL" type="text" data-edit="createLink" />
+				<button class="btn" type="button">Add</button>
+			</div>
+		</div> -->
+		<div class="btn-group">
+			<!-- <a class="btn btn-default" data-edit="unlink" title="Remove Hyperlink"><i class="fa fa-unlink"></i></a> -->
+			<span class="btn btn-default" title="이미지 삽입" id="pictureBtn">
+				<i class="fa fa-picture-o"></i>
+				<input class="imgUpload" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+			</span>
+		</div>
+		<div class="btn-group">
+			<a class="btn btn-default" data-edit="undo" title="실행취소 (Ctrl+Z)"><i class="fa fa-undo"></i></a>
+			<a class="btn btn-default" data-edit="redo" title="되돌리기 (Ctrl+Y)"><i class="fa fa-repeat"></i></a>
+		</div>
+		<input class="pull-right" type="hidden" data-edit="inserttext" id="voiceBtn" />
+	</div>
+	<div id="editor" class="lead"></div>
+</div>
+<script>
+	$(function() {
+		editor.addEventListener("paste", function(e){
+			/* setTimeout(function(){
+				e.target.innerHTML = stripTags(e.target.innerHTML, "<img>");
+			},10) */
+			
+			e.preventDefault();
+			
+			var pastedText = "";
+			if (window.clipboardData && window.clipboardData.getData){
+				pastedText = window.clipboardData.getData('Text');
+			} else if (e.clipboardData && e.clipboardData.getData){
+				pastedText = e.clipboardData.getData('text/plain');
+			}
+			pastedText = pastedText.replace(/\n/g, "<br>");
+			editor.getWysiwyg().insertHtml(pastedText);
+		});
+		
+		function initToolbarBootstrapBindings() {
+			var foreColors = [
+				{color:"#000000", label:"검정색"},
+				{color:"#AAAAAA", label:"회색"},
+				{color:"#0000FF", label:"파란색"},
+				{color:"#30AD23", label:"초록색"},
+				{color:"#FF7F00", label:"주황색"},
+				{color:"#FF0000", label:"빨간색"},
+				{color:"#FFFF00", label:"노란색"},
+				{color:"#FFFFFF", label:"흰색"}
+			];
+			var foreColorTarget = $('.bootstrap-wysiwyg .fore-color').siblings('.dropdown-menu');
+			
+			$.each(foreColors, function (idx, foreColor) {
+				foreColorTarget.append($('<li><a data-edit="foreColor ' + foreColor.color +'">' + foreColor.label + '</a></li>'));
+			});
+			
+			var backColors = [
+  				{color:"#CCCCCC", label:"회색"},
+  				{color:"#0000FF", label:"파란색"},
+  				{color:"#00FF00", label:"초록색"},
+  				{color:"#FF7F00", label:"주황색"},
+  				{color:"#FF0000", label:"빨간색"},
+  				{color:"#FFFF00", label:"노란색"},
+  				{color:"#FFFFFF", label:"흰색"}
+  			];
+  			var backColorTarget = $('.bootstrap-wysiwyg .back-color').siblings('.dropdown-menu');
+
+  			$.each(backColors, function (idx, backColor) {
+  				backColorTarget.append($('<li><a data-edit="backColor ' + backColor.color +'">' + backColor.label + '</a></li>'));
+  			});
+
+			$('a[title]').tooltip({container:'body'});
+
+			$('.dropdown-menu input').click(function() {return false;}).change(function() {
+	    		$(this).parent('.dropdown-menu').siblings('.dropdown-toggle').dropdown('toggle');
+			}).keydown('esc', function() {
+				this.value='';$(this).change();
+			});
+
+			$('[data-role=magic-overlay]').each(function() { 
+				var overlay = $(this), target = $(overlay.data('target')); 
+				overlay.css('opacity', 0).css('position', 'absolute').offset(target.offset()).width(target.outerWidth()).height(target.outerHeight());
+			});
+
+			if ("onwebkitspeechchange" in document.createElement("input")) {
+				var editorOffset = $('#editor').offset();
+				//$('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#editor').innerWidth()-35});
+			}else{
+				$('#voiceBtn').hide();
+			}
+		};
+
+		function showErrorAlert (reason, detail) {
+			var msg='';
+			if (reason==='unsupported-file-type') {
+				msg = "Unsupported format " + detail;
+			}else{
+				console.log("error uploading file", reason, detail);
+			}
+
+			$('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+ 
+			'<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
+		};
+
+		initToolbarBootstrapBindings();  
+
+		$('#editor').wysiwyg({ fileUploadError: showErrorAlert} );
+
+		window.prettyPrint && prettyPrint();
+	});
+</script>

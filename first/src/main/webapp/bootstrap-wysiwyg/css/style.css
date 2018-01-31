@@ -1,0 +1,229 @@
+/* this CSS is not part of the widget, it is here just as an example of the demo page styling.... Don't copy this one, roll your own. One
+ * of the key things about the widget is that it allows you to do your own styling!
+ */
+
+
+.bootstrap-wysiwyg #editor, .bootstrap-wysiwyg #first-editor, .bootstrap-wysiwyg #second-editor {
+	background-color: white;
+	border-collapse: separate;
+  	border: 1px solid rgb(204, 204, 204);
+ 	padding: 10px;
+ 	box-sizing: content-box;
+ 	-webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0 1px 1px 0 inset;
+ 	box-shadow: rgba(0, 0, 0, 0.0745098) 0 1px 1px 0 inset;
+	border-top-right-radius: 3px; border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px; border-top-left-radius: 3px;
+	overflow: hidden;
+	min-height:300px;
+	outline: none;
+}
+.bootstrap-wysiwyg #editor:focus{
+    border-color:rgba(82, 168, 236, 0.8);
+    outline:0;
+    outline:thin dotted \9;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+    -moz-box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+}
+
+.bootstrap-wysiwyg #editor img, .bootstrap-wysiwyg #first-editor img, .bootstrap-wysiwyg #second-editor img{
+	display:block !important;
+	max-width:100% !important;
+}
+
+.bootstrap-wysiwyg #editor{
+	font-size:14px !important;
+}
+
+.bootstrap-wysiwyg #editor font[size='1']{
+	font-size:11px;
+}
+
+.bootstrap-wysiwyg #editor font[size='3']{
+	font-size:14px;
+}
+
+.bootstrap-wysiwyg #editor font[size='5']{
+	font-size:18px;
+}
+
+.bootstrap-wysiwyg .voiceBtn {
+	width: 20px;
+	color: transparent;
+	background-color: transparent;
+	transform: scale(2.0, 2.0);
+	-webkit-transform: scale(2.0, 2.0);
+	-moz-transform: scale(2.0, 2.0);
+	border: transparent;
+	cursor: pointer;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.bootstrap-wysiwyg div[data-role="editor-toolbar"] {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	box-sizing:content-box;
+}
+
+.bootstrap-wysiwyg div[data-role="editor-toolbar"] *{
+	box-sizing:content-box;
+}
+
+.bootstrap-wysiwyg div[data-role="editor-toolbar"] .btn{
+	padding:6px 12px;
+	height:auto;
+}
+
+.bootstrap-wysiwyg .dropdown-menu a {
+	cursor: pointer;
+}
+
+.bootstrap-wysiwyg .btn-toolbar {
+	padding: 10px 0px 0px 0px;
+}
+
+.bootstrap-wysiwyg .btn-toolbar .btn-group{
+	margin-bottom:5px;
+}
+
+.bootstrap-wysiwyg [contentEditable=true]:empty:not(:focus):before {
+	content:attr(data-placeholder)
+}
+
+.bootstrap-wysiwyg .placeholderText {
+	color: #777;
+}
+
+.bootstrap-wysiwyg .imgUpload
+{
+	width: 0;
+	height: 0;
+	position:absolute
+}
+
+/*
+	Font Sizes 
+	fs represents the font-size attribute; therefore,
+	fs-five would be the equivalent to font-size: 5;	
+*/
+
+.bootstrap-wysiwyg .fs-One {
+	font-size: 11px;
+}
+
+.bootstrap-wysiwyg .fs-Three {
+	font-size: 14px;
+}
+
+.bootstrap-wysiwyg .fs-Five {
+	font-size: 18px;
+}
+
+/* Font Color */
+
+/* Black */
+.bootstrap-wysiwyg a[data-edit="foreColor #000000"]::before {
+    content: "\f0c8  ";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    color: #000000;
+    font-size: 18px;
+    top: 10px;
+    left: 0;
+}
+
+/* Gray */
+.bootstrap-wysiwyg a[data-edit="foreColor #AAAAAA"]::before,
+.bootstrap-wysiwyg a[data-edit="backColor #CCCCCC"]::before {
+    content: "\f0c8  ";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    color: #AAAAAA;
+    font-size: 18px;
+    top: 10px;
+    left: 0;
+}
+
+/* Blue */
+.bootstrap-wysiwyg a[data-edit="foreColor #0000FF"]::before,
+.bootstrap-wysiwyg a[data-edit="backColor #0000FF"]::before {
+    content: "\f0c8  ";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    color: #0000FF;
+    font-size: 18px;
+    top: 10px;
+    left: 0;
+}
+
+/* Green */
+.bootstrap-wysiwyg a[data-edit="foreColor #30AD23"]::before,
+.bootstrap-wysiwyg a[data-edit="backColor #00FF00"]::before {
+    content: "\f0c8  ";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    color: #30AD23;
+    font-size: 18px;
+    top: 10px;
+    left: 0;
+}
+
+
+/* Orange */
+.bootstrap-wysiwyg a[data-edit="foreColor #FF7F00"]::before,
+.bootstrap-wysiwyg a[data-edit="backColor #FF7F00"]::before {
+    content: "\f0c8  ";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    color: #FF7F00;
+    font-size: 18px;
+    top: 10px;
+    left: 0;
+}
+
+/* Red */ 
+.bootstrap-wysiwyg a[data-edit="foreColor #FF0000"]::before,
+.bootstrap-wysiwyg a[data-edit="backColor #FF0000"]::before {
+    content: "\f0c8  ";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    color: #FF0000;
+    font-size: 18px;
+    top: 10px;
+    left: 0;
+}
+
+/* Yellow */
+.bootstrap-wysiwyg a[data-edit="foreColor #FFFF00"]::before,
+.bootstrap-wysiwyg a[data-edit="backColor #FFFF00"]::before  {
+    content: "\f0c8  ";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    color: #FFFF00;
+    font-size: 18px;
+    top: 10px;
+    left: 0;
+}
+
+/* White */
+.bootstrap-wysiwyg a[data-edit="foreColor #FFFFFF"]::before,
+.bootstrap-wysiwyg a[data-edit="backColor #FFFFFF"]::before  {
+    content: "\f0c8  ";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    color: #FFFFFF;
+    font-size: 18px;
+    top: 10px;
+    left: 0;
+}

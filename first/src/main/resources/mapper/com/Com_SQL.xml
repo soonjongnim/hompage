@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com">
+	
+	<sql id="pagingPre">
+    <![CDATA[
+        SELECT
+            AAA.*
+        FROM(
+            SELECT
+                (SELECT COUNT(*) AS TOTAL_COUNT FROM tbcom_bbs) AS TOTAL_COUNT,
+                @rnum:=@rnum+1 AS RNUM,
+                AA.*
+            FROM( 
+    ]]>
+	</sql>
+	 
+	<sql id="pagingPost">
+	    <![CDATA[
+	            ) AA
+	            WHERE AA.NOTI_YN = 'Y'
+	        ) AAA
+	        WHERE
+	            AAA.RNUM BETWEEN #{START} AND #{END}
+	    ]]>
+	</sql> 
+
+	<insert id="fileInsert" parameterType="java.util.HashMap">
+	INSERT INTO
+		EASIHOMEPAGE.TBCOM_ATTACH (
+			COMPANY_CD, 		ATCH_ID,			FILE_PATH,
+			FILE_NM,			FILE_EXT_NM,
+			FILE_SIZE,			TRANS_CD,
+			TRANS_NO,			SYSTEM_CD,	DEL_YN,
+			CRT_EMPNO,			CRT_DT,			UPD_EMPNO,			UPD_DT
+		)
+	VALUES
+		(
+			#{COMPANY_CD}, 		#{atch_id},			#{file_path},
+			#{file_nm},			#{file_ext_nm},
+			#{file_size},		#{apprTypeCd},
+			#{reqNo},			NULL,		'N',
+			#{empNo},			date_format(now(),'%Y-%m-%d %H:%i:%s'),			#{empNo},			date_format(now(),'%Y-%m-%d %H:%i:%s')
+		)
+	</insert>
+	<delete id="deleteFile" parameterType="java.util.HashMap">
+		DELETE FROM EASIHOMEPAGE.TBCOM_ATTACH
+		 WHERE TRANS_CD    = #{apprTypeCd}
+		   AND TRANS_NO    = #{reqNo}
+		   AND COMPANY_CD  = #{companyCd}
+	</delete>
+	
+</mapper>

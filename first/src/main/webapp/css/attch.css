@@ -1,0 +1,81 @@
+@CHARSET "UTF-8";
+
+.easi-file-input{
+			cursor:pointer;
+		}
+		
+		.bbs-attach-limit-size{
+			width:30%;
+			margin-top:5px;
+			background:#fff;
+			border-radius:3px;
+			border:1px solid #c0c0c0;
+			overflow:hidden;
+			position:relative;
+			text-align:center;
+			padding:2px 0px;
+		}
+		
+		.bbs-attach-limit-size span{
+			vertical-align:middle;
+			position:relative;
+			z-index:2;
+			font-size:11px;
+			padding:2px 0px;
+		}
+		
+		.bbs-attach-current-size{
+			width:0%;
+			height:100%;
+			background:#ddd;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:1;
+		}
+		
+		.bbs-attach-box{
+			list-style:none;
+			padding:5px;
+			margin:0px;
+			border:1px solid #c7c7c7;
+			border-radius:5px;
+			width:30%;
+			display:block;
+			overflow:hidden;
+			min-height:27px;
+			margin-top:5px;
+		}
+		
+		.bbs-attach-box li{
+			display:table;
+			table-layout:fixed;
+			width:100%;
+			overflow:hidden;
+		}
+		
+		.bbs-attach-box li:hover{
+			background:#efefef;
+		}
+		
+		.bbs-attach-box li .file-name{
+			padding:5px 5px;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+			word-break:break-all;
+			display:table-cell;
+			vertical-align:middle;
+		}
+		
+		.bbs-attach-box li .btn-remove{
+			display:table-cell;
+			width:15px;
+			padding:5px 0px;
+			cursor:pointer;
+			font-weight:bold;
+		}
+		
+		.bbs-attach-wrap .hidden-file-inputs{
+			display:none;
+		}

@@ -1,0 +1,623 @@
+body {
+	font: 400 15px Montserrat, sans-serif;
+	line-height: 1.8;
+	color: #818181;
+	
+	font-family:'나눔고딕체', 'Nanum Gothic', Nanum Gothic;
+
+}
+.table-in th{
+	font-family:'나눔고딕체', 'Nanum Gothic', Nanum Gothic;
+	color:#4d4d4d;
+}
+
+h4{
+	    font-size: 17px;
+}
+h3{
+	    font-size: 21px;
+}
+.border_1px{
+	
+}
+
+.dropdown-menu{
+    font-size: 12px;
+}
+.img-pic-s{
+   	  background-size: cover;width:75%;; 	
+}
+.img-pic{
+   	 background-position: center; background-size: cover;height:100%;width:100%;margin-left:34px; 	
+}
+.img-pic1{
+   	 background-position: bottom;height:100%;width:100%;	
+}
+.bg-img{
+   	 background-position: center; background-size: cover;min-height:320px; 	
+}
+.bg-img1{
+   	 background-position: center; background-size: cover;min-height:600px; 	
+}
+.title-h {
+	text-align: left;
+	color: white;
+}
+
+.sub-title2 {
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #303030;
+	font-weight: 600;
+	margin-bottom: 30px;
+}
+
+.sub-title {
+	font-size: 14px;
+	line-height: 1.375em;
+	color: #303030;
+	font-weight: 400;
+	margin-bottom: 30px;
+}
+
+.ma-l-150 {
+	margin-left: 150px;
+}
+
+
+.jumbotron {
+	background-color: #00004d;
+	color: #fff;
+	padding: 100px 25px;
+	font-family: Montserrat, sans-serif;
+}
+
+.container-fluid {
+	padding: 60px 50px;
+}
+
+.title-name {
+	text-shadow: 1px 1px gray;
+	color: #00004d;
+	font-size: 28px;
+	margin: 0 auto;
+	
+}
+
+.t-al-cen {
+	text-align: center;
+}
+
+.bg-footer {
+	background-color: #4d4d4d;
+	padding: 0px;
+}
+
+.bg-putgreen {
+	background-color: #b3b3b3;
+}
+
+.bg-grey {
+	background-color: #f6f6f6;
+}
+
+.bg-cobalt {
+	background-color: #00004d;
+}
+
+.bg-dgray {
+	background-color: #aaaaaa;
+}
+
+.bg-wgray {
+	background-color: #eeeeee;
+}
+
+.bg-softgray {
+	background-color: hsl(0, 0%, 97%);
+}
+
+.bg-white {
+	background-color: white;
+}
+
+/*인트로 상세css */
+
+.intro{
+   background-color:#6ea6dd;
+   color:white;
+   border-radius: 5px; 
+    padding-bottom:15px;
+}
+.intro-1{
+    color:#6ea6dd;
+    border-radius: 5px; 
+    padding-bottom:15px;
+}
+.intro-2{
+   border:2px solid white;
+   color:black ;
+   background-color:#eeeeee;
+   border-radius: 10px; 
+   padding-bottom:15px;
+ 
+}
+.intro-3{
+   margin:5px;
+   border:10px solid white;
+   color:black ;
+   background-color:#eeeeee;
+   border-radius: 15px; 
+   padding-bottom:15px;
+   height:300px;
+   
+}
+.ceo4{
+   color:black ;
+   background-color:white;
+   border-radius: 5px; 
+   min-height:270px;
+  
+   
+}
+.ceo4-1{
+  color:white ;
+   background-color:#6ea6dd;
+   border-radius: 5px; 
+ 
+   padding-bottom:15px;
+   font-family: Raleway;
+}
+.intro4-1{
+  
+   color:black ;
+   background-color:#eeeeee;
+    
+   padding-bottom:15px;
+   font-family: Raleway;
+}
+.intro4-2{
+   color:white ;
+   background-color:#6ea6dd;
+    
+   padding-bottom:15px;
+   font-family: Raleway;
+   
+}
+.care1-1{
+   color:black ;
+   font-weight: bold;
+   background-color:#d6e6f5;
+   border:2px solid white; 
+   padding-bottom:15px;
+   font-family: Raleway;
+   
+}
+.care1-2{
+   color:black ;
+   font-weight: bold;
+   background-color:#c1d9f0;
+   border:2px solid white; 
+   padding-bottom:15px;
+   font-family: Raleway;
+   
+}
+.care1-3{
+   color:black ;
+   font-weight: bold;
+   background-color:#acccec;
+   border:2px solid white; 
+   padding-bottom:15px;
+   font-family: Raleway;
+   
+}
+.care1-4{
+   color:black ;
+   font-weight: bold;
+   background-color:#98bfe7;
+   border:2px solid white; 
+   padding-bottom:15px;
+   font-family: Raleway;
+   
+}
+.care1-5{
+   color:black ;
+   font-weight: bold;
+   background-color: #83b3e2;
+   border:2px solid white; 
+   padding-bottom:15px;
+   font-family: Raleway;
+   
+}
+.care1-6{
+   color:black ;
+   font-weight: bold;
+   background-color:#6ea6dd;
+   border:2px solid white; 
+   padding-bottom:15px;
+   font-family: Raleway;
+   
+}
+.care1-p{
+   color:black ;
+   
+   background-color:#6ea6dd;
+
+	  height:1px;
+   font-family: Raleway;
+   text-align:top;
+   
+}
+
+
+
+.font-white {
+	color: white;
+}
+
+.margin100 {
+	margin: 100%;
+}
+
+.logo-small {
+	color: #444444;
+	font-size: 50px;
+}
+
+.logo {
+	color: #444444;
+	font-size: 200px;
+}
+.logo-m {
+	color:  #6ea6dd;
+	font-size: 110px;
+}
+.logo-b {
+	color:  gray;
+	font-size: 90px;
+}
+.logo-car {
+	color:  #6ea6dd;
+	font-size: 85px;
+}
+
+
+.logo1 {
+	color: #444444;
+	font-size: 200px;
+}
+
+.thumbnail {
+	padding: 0 0 15px 0;
+	border: none;
+	border-radius: 0;
+}
+
+.thumbnail img {
+	width: 100%;
+	height: 100%;
+	margin-bottom: 10px;
+}
+
+.carousel-control.right, .carousel-control.left {
+	background-image: none;
+	color: #6ea6dd;
+}
+
+.carousel-indicators li {
+	border-color: #6ea6dd;
+}
+
+.carousel-indicators li.active {
+	background-color:#6ea6dd;
+}
+
+.pic1 {
+	width: 25%;
+	height: 300px;
+}
+
+.pic2 {
+	width: 320px;
+	height: 250px;
+	margin: auto;
+}
+
+.item h4 {
+	font-size: 19px;
+	line-height: 1.375em;
+	font-weight: 400;
+	font-style: italic;
+	margin: 70px 0;
+}
+
+.item span {
+	font-style: normal;
+}
+
+.panel {
+	border: 1px solid #444444;
+	border-radius: 0 !important;
+	transition: box-shadow 0.5s;
+}
+
+.panel:hover {
+	box-shadow: 5px 0px 40px rgba(0, 0, 0, .2);
+}
+
+.panel-footer .btn:hover {
+	border: 1px solid #444444;
+	background-color: #fff !important;
+	color: black;
+}
+
+.panel-heading {
+	color: #fff !important;
+	background-color: #444444 !important;
+	padding: 25px;
+	border-bottom: 10px solid #444444;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.panel-footer {
+	background-color: white !important;
+}
+
+.panel-footer h3 {
+	font-size: 32px;
+}
+
+.panel-footer h4 {
+	color: #aaa;
+	font-size: 14px;
+}
+
+.panel-footer .btn {
+	margin: 15px 0;
+	background-color: #444444;
+	color: white;
+}
+
+.menubar li:hover ul {
+	display: block; /* */
+}
+
+.menubar li ul {
+	background: white;
+	color: white;
+	display: none; /*  */
+	height: auto;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	position: absolute;
+	width: 100px;
+	z-index: 200;
+	list-style-type: none;
+}
+
+.navbar {
+	margin-bottom: 0;
+	background-color: white;
+	z-index: 9999;
+	border: 0;
+	font-size: 12px ;
+	line-height: 1.42857143 !important;
+	letter-spacing: 4px;
+	border-radius: 0;
+	
+}
+.f-c-block{
+	color:black;
+	font-size:28px;
+    margin-top:-10px;
+}
+.w3-display-left{position:absolute;top:30%;left:19%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
+.navbar li a, .navbar .navbar-brand {
+	color: black !important;
+	
+}
+
+.navbar .navbar-nav {
+	display: inline-block;
+	float: right;
+	
+}
+
+.navbar .navbar-collapse {
+	text-align: center;
+	font-size: 12px;
+	
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+	color: white !important;
+	background-color: #6ea6dd !important;
+	text-decoration:none;
+	list-style-type : none ;
+	font-size: 12px;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+	color: #fff !important;
+}
+
+footer .glyphicon {
+	font-size: 20px;
+	margin-bottom: 20px;
+	color: #f4511e;
+}
+
+.slideanim {
+	visibility: hidden;
+}
+
+.slide {
+	animation-name: slide;
+	-webkit-animation-name: slide;
+	animation-duration: 1s;
+	-webkit-animation-duration: 1s;
+	visibility: visible;
+}
+
+@keyframes slide { 
+	0% {
+	opacity: 0;
+	transform: translateY(70%);
+	}
+	100% {
+	opacity:1;transform:translateY(0%);
+	}
+}
+@-webkit-keyframes slide {
+	0% {
+	 opacity: 0;
+	-webkit-transform: translateY(70%);
+	}
+	100%{
+	opacity:1;
+-webkit-transform: translateY(0%);
+
+    }
+}
+@media screen and (max-width: 768px) {
+	.col-sm-4 {
+		text-align: ;
+		margin: 25px 0;
+	}
+	.btn-lg {
+		width: 100%;
+		margin-bottom: 35px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.logo {
+		font-size: 150px;
+	}
+}
+
+
+.bg-1 {
+	background-color: #eeeeee; /* Green */
+	color: #ffffff;
+}
+
+.bg-2 {
+	background-color: #474e5d; /* Dark Blue */
+	color: #ffffff;
+}
+
+.bg-3 {
+	background-color: #ffffff; /* White */
+	color: #555555;
+}
+.img-in{
+	width:210px;
+	height:145px;
+	
+	
+}
+.img-pro{
+	width:180px;
+	height:125px;
+}
+
+.atag {
+	text-transform: uppercase;
+	display: none;
+}
+
+.tab {
+	overflow: hidden;
+	color:white;
+	background-color: #6ea6dd;
+}
+.tab1 {
+	overflow: hidden;
+}	
+ p {
+ line-height:18px;
+ font-size:12px;
+}	
+
+/* Style the buttons inside the tab */
+.tab button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 7px 19px;
+	transition: 0.3s;
+	font-size: 17px;
+	font-family:'나눔고딕체', 'Nanum Gothic', Nanum Gothic;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+	background-color: #6ea6dd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+	background-color: #ffffff;
+	color:#6ea6dd;
+}
+
+/* Style the tab content */
+.tabcontent {
+	padding: 6px 12px;
+	min-height: 500px;
+}
+.tabcontent2 {
+	
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+	min-height: 225px;
+}
+.cho:hover{
+	box-shadow: 5px 0px 40px rgba(0,0,0, .4);
+	text-shadow: 0.1em 0.1em 0.10em #c0c0c0; 
+}
+  #moveBtn{
+        position: fixed;
+        left: 10px;
+        top:10px;
+      }
+/* 나눔고딕체 */
+         @font-face {
+           font-family: 'Nanum Gothic';
+           font-style: normal;
+           font-weight: 400;
+           src: url('resources/css/fonts/NanumGothic-Regular.eot');
+           src: url('resources/css/fonts/NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),
+                url('resources/css/fonts/NanumGothic-Regular.woff2') format('woff2'),
+                url('resources/css/fonts/NanumGothic-Regular.woff') format('woff'),
+                url('resources/css/fonts/NanumGothic-Regular.ttf') format('truetype');
+         }
+         @font-face {
+           font-family: 'Nanum Gothic';
+           font-style: normal;
+           font-weight: 700;
+           src: url('resources/css/fonts/NanumGothic-Regular.eot');
+           src: url('resources/css/fonts/NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),
+                url('resources/css/fonts/NanumGothic-Regular.woff2') format('woff2'),
+                url('resources/css/fonts/NanumGothic-Regular.woff') format('woff'),
+                url('resources/css/fonts/NanumGothic-Regular.ttf') format('truetype');
+         }
+         @font-face {
+           font-family: 'Nanum Gothic';
+           font-style: normal;
+           font-weight: 800;
+           src: url('resources/css/fonts/NanumGothic-Regular.eot');
+           src: url('resources/css/fonts/NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),
+                url('resources/css/fonts/NanumGothic-Regular.woff2') format('woff2'),
+                url('resources/css/fonts/NanumGothic-Regular.woff') format('woff'),
+                url('resources/css/fonts/NanumGothic-Regular.ttf') format('truetype');
+         }오전 10:38 2017-12-18
